@@ -49,6 +49,10 @@ class FlutterWebviewPlugin {
       // ignore: prefer_collection_literals
       Map<String, JavascriptChannel>();
 
+  static void registerWith(Registrar registrar) {
+    _instance._channel.setMethodCallHandler(_instance._handleMessages);
+  }
+
   Future<Null> _handleMessages(MethodCall call) async {
     switch (call.method) {
       case 'onBack':

@@ -22,8 +22,8 @@ flutter:
       ios:
         pluginClass: FlutterWebviewPlugin
       web:
-        pluginClass: FlutterWebViewPluginWeb
-        fileName: flutter_webview_plugin_web.dart
+        pluginClass: FlutterWebViewPlugin
+        fileName: flutter_webview_plugin.dart
 
 dependencies:
   flutter:

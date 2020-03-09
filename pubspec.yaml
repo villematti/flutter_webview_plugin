@@ -15,11 +15,20 @@ environment:
 
 flutter:
   plugin:
-    androidPackage: com.flutter_webview_plugin
-    pluginClass: FlutterWebviewPlugin
+    platforms:
+      android:
+        package: com.flutter_webview_plugin
+        pluginClass: FlutterWebviewPlugin
+      ios:
+        pluginClass: FlutterWebviewPlugin
+      web:
+        pluginClass: FlutterWebviewPlugin
+        fileName: flutter_webview_plugin.dart
 
 dependencies:
   flutter:
+    sdk: flutter
+  flutter_web_plugins:
     sdk: flutter
 
 dev_dependencies:

@@ -50,7 +50,9 @@ class FlutterWebviewPlugin {
       Map<String, JavascriptChannel>();
 
   static void registerWith(Registrar registrar) {
-    _instance._channel.setMethodCallHandler(_instance._handleMessages);
+    final MethodChannel channel = MethodChannel(
+        _kChannel, const StandardMethodCodec(), registrar.messenger);
+    channel.setMethodCallHandler(_instance._handleMessages);
   }
 
   Future<Null> _handleMessages(MethodCall call) async {

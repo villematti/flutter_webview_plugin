@@ -6,6 +6,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:flutter_webview_plugin/src/javascript_channel.dart';
 import 'package:flutter_webview_plugin/src/javascript_message.dart';
+import 'package:flutter_webview_plugin/src/webview_scaffold.dart';
+
+final Set<JavascriptChannel> jsChannels = [
+  JavascriptChannel(
+      name: 'Print',
+      onMessageReceived: (JavascriptMessage message) {
+        print(message.message);
+      }),
+].toSet();
 
 const _kChannel = 'flutter_webview_plugin';
 
@@ -33,7 +42,22 @@ class FlutterWebViewPluginWeb {
     switch (call.method) {
       case 'launch':
         final String url = call.arguments['url'];
-        return Container(child: Text('Hello World! $url'));
+        return WebviewScaffold(
+            url: url,
+            javascriptChannels: jsChannels,
+            mediaPlaybackRequiresUserGesture: false,
+            appBar: AppBar(
+              title: const Text('Widget WebView'),
+            ),
+            withZoom: true,
+            withLocalStorage: true,
+            hidden: true,
+            initialChild: Container(
+              color: Colors.redAccent,
+              child: const Center(
+                child: Text('Waiting.....'),
+              ),
+            ));
         break;
       case 'close':
         close();

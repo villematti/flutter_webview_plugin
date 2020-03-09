@@ -52,7 +52,8 @@ class FlutterWebviewPlugin {
   static void registerWith(Registrar registrar) {
     final MethodChannel channel = MethodChannel(
         _kChannel, const StandardMethodCodec(), registrar.messenger);
-    channel.setMethodCallHandler(_instance._handleMessages);
+    final FlutterWebviewPlugin instance = FlutterWebviewPlugin();
+    channel.setMethodCallHandler(instance._handleMessages);
   }
 
   Future<Null> _handleMessages(MethodCall call) async {

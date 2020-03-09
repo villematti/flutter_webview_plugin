@@ -33,7 +33,7 @@ class FlutterWebViewPluginWeb {
     switch (call.method) {
       case 'launch':
         final String url = call.arguments['url'];
-        return Future<bool>.value(html.window.open(url, '') != null);
+        return Container(child: Text('Hello World! $url'));
         break;
       case 'close':
         close();

@@ -3,9 +3,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_webview_plugin/src/javascript_channel.dart';
-
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:flutter_webview_plugin/src/javascript_channel.dart';
 
 import 'javascript_message.dart';
 
@@ -49,6 +48,13 @@ class FlutterWebviewPlugin {
       // ignoring warning as min SDK version doesn't support collection literals yet
       // ignore: prefer_collection_literals
       Map<String, JavascriptChannel>();
+
+  // static void registerWith(Registrar registrar) {
+  //   final MethodChannel channel = MethodChannel(
+  //       _kChannel, const StandardMethodCodec(), registrar.messenger);
+  //   final FlutterWebviewPlugin instance = FlutterWebviewPlugin._instance;
+  //   channel.setMethodCallHandler(instance._handleMessages);
+  // }
 
   Future<Null> _handleMessages(MethodCall call) async {
     switch (call.method) {

@@ -35,13 +35,6 @@ class FlutterWebviewPlugin {
 
   final MethodChannel _channel;
 
-  static void registerWith(Registrar registrar) {
-    final MethodChannel channel = MethodChannel(
-        _kChannel, const StandardMethodCodec(), registrar.messenger);
-    final FlutterWebviewPlugin instance = FlutterWebviewPlugin();
-    channel.setMethodCallHandler(instance._handleMessages);
-  }
-
   final _onBack = StreamController<Null>.broadcast();
   final _onDestroy = StreamController<Null>.broadcast();
   final _onUrlChanged = StreamController<String>.broadcast();

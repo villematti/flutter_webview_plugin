@@ -23,7 +23,7 @@ flutter:
         pluginClass: FlutterWebviewPlugin
       web:
         pluginClass: FlutterWebviewPlugin
-        fileName: flutter_webview_plugin.dart
+        fileName: flutter_webview_plugin_web.dart
 
 dependencies:
   flutter:
